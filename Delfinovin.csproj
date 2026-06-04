@@ -8,6 +8,7 @@
       <ApplicationIcon>Resources\Icons\app.ico</ApplicationIcon>
       <AssemblyVersion>3.0.0</AssemblyVersion>
 	  <UseWindowsForms>true</UseWindowsForms>
+	  <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
 
 	<ItemGroup>

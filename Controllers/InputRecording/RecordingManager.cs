@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
+using System;
 
 namespace Delfinovin.Controllers
 {
@@ -9,7 +10,7 @@ namespace Delfinovin.Controllers
     /// </summary>
     public static class RecordingManager
     {
-        private const string RECORDING_DIRECTORY = ".\\recordings";
+        private static readonly string RECORDING_DIRECTORY = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Delfinovin", "recordings");
 
         /// <summary>
         /// Get a list of recording names saved.
