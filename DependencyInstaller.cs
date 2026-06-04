@@ -18,8 +18,8 @@ namespace Delfinovin
     /// </summary>
     public static class DependencyInstaller
     {
-        private const string VIGEM_RELEASE_LINK = "https://github.com/ViGEm/ViGEmBus/releases/download/v1.21.442.0/ViGEmBus_1.21.442_x64_x86_arm64.exe";
-        private const string VIGEM_FILENAME = "ViGEmBusSetup_1.21.442.exe";
+        private const string VIGEM_RELEASE_LINK = "https://github.com/nefarius/ViGEmBus/releases/download/v1.18.367.0/ViGEmBus_1.18.367_x64_x86.exe";
+        private const string VIGEM_FILENAME = "ViGEmBus_1.18.367_x64_x86.exe";
 
         /// <summary>
         /// Check whether or not ViGEmBus is installed.

@@ -5,7 +5,6 @@ using Delfinovin.Controls.Windows;
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -59,7 +58,6 @@ namespace Delfinovin
         private void InitializeWindow()
         {
             InitializeNotifyIcon();
-            SetApplicationTitle();
             CreateDetailButtons();
             SetDefaultView();
 
@@ -90,18 +88,6 @@ namespace Delfinovin
 
             // Apply the menu strip to the notify icon
             _notifyIcon.ContextMenuStrip = notifyIconStrip;
-        }
-
-        private void SetApplicationTitle()
-        {
-            // Get the version of this assembly
-            Version appVersion = Assembly.GetExecutingAssembly().GetName().Version;
-
-            // Update the header text with the current version
-            mainWindowTitle.HeaderText = Strings.HeaderMainWindowTitle + " " + string.Format(Strings.HeaderVersionText, 
-                appVersion.Major, 
-                appVersion.Minor, 
-                appVersion.Build);
         }
 
         private void CreateDetailButtons()
