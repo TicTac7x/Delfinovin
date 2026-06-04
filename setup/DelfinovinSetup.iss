@@ -8,7 +8,7 @@
 AppId={{0607091B-1085-4D55-B269-F96A8C98D8CF}
 AppName=Delfinovin
 AppVersion=3.0
-;AppVerName=Delfinovin 3.0
+AppVerName=Delfinovin 3.0
 AppPublisher=Struggleton
 AppPublisherURL=https://github.com/Struggleton/Delfinovin
 AppSupportURL=https://github.com/Struggleton/Delfinovin
@@ -50,3 +50,7 @@ Name: "{autodesktop}\Delfinovin"; Filename: "{app}\Delfinovin.exe"; Tasks: deskt
 [Run]
 Filename: "{app}\Delfinovin.exe"; Description: "{cm:LaunchProgram,Delfinovin}"; Flags: nowait postinstall skipifsilent
 
+[UninstallDelete]
+Type: filesandordirs; Name: "{userdocs}\Delfinovin\profiles"
+Type: filesandordirs; Name: "{userdocs}\Delfinovin\recordings"
+Type: filesandordirs; Name: "{userdocs}\Delfinovin"
