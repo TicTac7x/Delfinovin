@@ -13,21 +13,21 @@ AppPublisher=Struggleton
 AppPublisherURL=https://github.com/Struggleton/Delfinovin
 AppSupportURL=https://github.com/Struggleton/Delfinovin
 AppUpdatesURL=https://github.com/Struggleton/Delfinovin
-DefaultDirName={autopf}\Delfinovin
+DefaultDirName={autopf32}\Delfinovin
 DisableDirPage=yes
 UninstallDisplayIcon={app}\Delfinovin.exe
 ; "ArchitecturesAllowed=x64compatible" specifies that Setup cannot run
 ; on anything but x64 and Windows 11 on Arm.
-ArchitecturesAllowed=x64compatible
+ArchitecturesAllowed=x86compatible
 ; "ArchitecturesInstallIn64BitMode=x64compatible" requests that the
 ; install be done in "64-bit mode" on x64 or Windows 11 on Arm,
 ; meaning it should use the native 64-bit Program Files directory and
 ; the 64-bit view of the registry.
-ArchitecturesInstallIn64BitMode=x64compatible
+ArchitecturesInstallIn64BitMode=x86compatible
 DisableProgramGroupPage=yes
 ; Uncomment the following line to run in non administrative install mode (install for current user only).
 ;PrivilegesRequired=lowest
-OutputDir=..\dist
+OutputDir=.\
 OutputBaseFilename=DelfinovinSetup
 SetupIconFile=..\Resources\Icons\app.ico
 SolidCompression=yes

@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
+using System;
 
 namespace Delfinovin.Controllers
 {
@@ -11,7 +12,7 @@ namespace Delfinovin.Controllers
     /// </summary>
     public static class ProfileManager
     {
-        private const string PROFILE_DIRECTORY = ".\\profiles";
+        private static readonly string PROFILE_DIRECTORY = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Delfinovin", "profiles");
 
         public static ControllerProfile[] CurrentProfiles { get; set; } = new ControllerProfile[4];
         static ProfileManager()
