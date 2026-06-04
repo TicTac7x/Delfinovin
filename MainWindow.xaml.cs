@@ -177,7 +177,12 @@ namespace Delfinovin
 
             else if (navigationSelection == NavigationSelection.Settings)
             {
-                ApplicationSettingsMenu applicationSettingsMenu = new ApplicationSettingsMenu();
+                ApplicationSettingsMenu applicationSettingsMenu = new ApplicationSettingsMenu
+                {
+                    Owner = this,
+                    WindowStartupLocation = WindowStartupLocation.CenterOwner
+                };
+
                 applicationSettingsMenu.ShowDialog();
             }
         }

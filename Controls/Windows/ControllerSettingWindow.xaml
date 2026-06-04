@@ -6,13 +6,12 @@
         xmlns:main="clr-namespace:Delfinovin"
         xmlns:ctrl="clr-namespace:Delfinovin.Controls"
         mc:Ignorable="d"
-        Title="{x:Static main:Strings.HeaderControllerSettings}" ResizeMode="NoResize" 
-        AllowsTransparency="True" WindowStyle="None" 
+        Title="{x:Static main:Strings.HeaderControllerSettings}" ResizeMode="CanMinimize" 
+        AllowsTransparency="False" WindowStyle="SingleBorderWindow" 
         Background="Transparent" Width="900" Height="500">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
             <RowDefinition/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
@@ -35,30 +34,17 @@
         </Grid.Resources>
 
         <Border x:Name="mainBackground" 
-                Grid.RowSpan="4"
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                Grid.Column="0"
                 Grid.ColumnSpan="2"
-                Background="{DynamicResource headerGradient}" 
-                BorderThickness="2" BorderBrush="Black"
-                CornerRadius="15,15,15,15"/>
+                Background="{DynamicResource headerGradient}" />
 
-        <Border x:Name="navigationBar" 
-                Grid.Row="2"
-                Grid.ColumnSpan="2"
-                Background="{DynamicResource controllerBarGradient}" 
-                BorderThickness="2" BorderBrush="Black"
-                CornerRadius="0,0,15,15"/>
-
-        <ctrl:ApplicationTitleLabel x:Name="settingsWindowTitle" 
-                                    Grid.ColumnSpan="2"
-                                    HeaderText="{x:Static main:Strings.HeaderControllerSettings}"/>
-
-        <ctrl:WindowControls x:Name="windowControls" 
-                             Grid.Column="1"
-                             HorizontalAlignment="Right" />
+   
 
 
         <Viewbox x:Name="dialogContainer" 
-                 Grid.Row="1" 
+                 Grid.Row="0" 
                  Grid.Column="1" 
                  HorizontalAlignment="Right" 
                  Margin="0,35,50,25">
@@ -67,7 +53,7 @@
         </Viewbox>
 
         <StackPanel x:Name="settingContainer" 
-                    Grid.Row="1" 
+                    Grid.Row="0" 
                     Grid.ColumnSpan="2" 
                     Width="300" 
                     HorizontalAlignment="Left" 
@@ -119,7 +105,8 @@
                                        ItemText="{x:Static main:Strings.SettingSwapSticks}"
                                        ToggleValueChanged="SwapSticksToggleValueChanged"/>
 
-            <StackPanel Grid.Row="1"
+            <StackPanel Grid.Row="0"
+                        Grid.Column="0"
                         Orientation="Horizontal"
                         HorizontalAlignment="Right" 
                         VerticalAlignment="Bottom">
@@ -132,7 +119,14 @@
             
         </StackPanel>
 
-        <StackPanel x:Name="optionsContainer" Grid.Row="2"
+        <Border x:Name="navigationBar" 
+        Grid.Row="1"
+        Grid.ColumnSpan="2"
+        Background="{DynamicResource controllerBarGradient}" 
+        BorderThickness="0,2,0,0" BorderBrush="Black"
+        CornerRadius="0,0,0,0"/>
+
+        <StackPanel x:Name="optionsContainer" Grid.Row="1"
                     Grid.Column="2"
                     Orientation="Horizontal" 
                     HorizontalAlignment="Right" 

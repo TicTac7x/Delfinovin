@@ -12,7 +12,8 @@
     Width="930"
     Height="500"
     Closing="MainWindow_Closing"
-    ResizeMode="NoResize"
+    WindowStyle="SingleBorderWindow"
+    ResizeMode="CanMinimize"
     mc:Ignorable="d">
 
     <Grid>
@@ -72,7 +73,8 @@
         <Viewbox
             x:Name="navigationItemContainer"
             Grid.Row="0"
-            Grid.RowSpan="2">
+            Grid.Column="0"
+            VerticalAlignment="Top">
 
             <StackPanel x:Name="navBarList">
                 <ctrl:NavigationButton
@@ -96,28 +98,18 @@
                     Clicked="NavigationButton_Clicked"
                     Tag="{x:Static main:NavigationSelection.PlaybackRecording}" />
 
-                <ctrl:NavigationButton
-                    x:Name="donationButton"
-                    ButtonIcon="/Delfinovin;component/Resources/Icons/donate-support.png"
-                    ButtonText="{x:Static main:Strings.NavigationSupport}"
-                    Clicked="NavigationButton_Clicked"
-                    Tag="{x:Static main:NavigationSelection.DonationSupport}" />
 
-                <ctrl:NavigationButton
-                    x:Name="faqButton"
-                    ButtonIcon="/Delfinovin;component/Resources/Icons/faq-support.png"
-                    ButtonText="{x:Static main:Strings.NavigationFAQ}"
-                    Clicked="NavigationButton_Clicked"
-                    Tag="{x:Static main:NavigationSelection.FAQ}" />
-
-                <ctrl:NavigationButton
-                    x:Name="settingsButton"
-                    ButtonIcon="/Delfinovin;component/Resources/Icons/settings.png"
-                    ButtonText="{x:Static main:Strings.NavigationSettings}"
-                    Clicked="NavigationButton_Clicked"
-                    Tag="{x:Static main:NavigationSelection.Settings}" />
             </StackPanel>
         </Viewbox>
+
+        <ctrl:NavigationButton
+            Grid.Row="1"
+            Grid.Column="0"
+    x:Name="settingsButton"
+    ButtonIcon="/Delfinovin;component/Resources/Icons/settings.png"
+    ButtonText="{x:Static main:Strings.NavigationSettings}"
+    Clicked="NavigationButton_Clicked"
+    Tag="{x:Static main:NavigationSelection.Settings}" />
 
         <Viewbox
             x:Name="viewContainer"

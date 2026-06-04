@@ -8,17 +8,17 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="50"/>
         </Grid.ColumnDefinitions>
 
-        <Label x:Name="itemText" 
-               HorizontalAlignment="Center" VerticalAlignment="Center"
+        <Label x:Name="itemText"
+               HorizontalAlignment="Left" VerticalAlignment="Center"
                Foreground="{DynamicResource textColor}" FontFamily="Lato Light"
                Content="{Binding ItemText}"  FontSize="14"/>
 
         <ToggleButton x:Name="settingButton"
             Grid.Column="1"
-            HorizontalAlignment="Center" VerticalAlignment="Center"
+            HorizontalAlignment="Right" VerticalAlignment="Center"
             Background="{DynamicResource appSettingToggleColor}" 
             IsChecked="{Binding Checked}" Margin="10,0,0,0" 
                       Checked="ValueChanged" 
