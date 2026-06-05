@@ -29,7 +29,7 @@
         public const string PromptInstallViGEm = "ViGEmBus is not installed. Would you like to install it now?";
 
         public const string NotificationCalibrationComplete = "Calibration complete.";
-        public const string NotificationProfileApplied = "Applied {0} to port {1}!";
+        public const string NotificationProfileApplied = "Applied profile \"{0}\" to port {1}!";
         public const string NotificationNoUpdate = "No updates are available.";
         public const string NotificationSettingsReset = "Application settings reset.";
         public const string NotificationProfileSaved = "Saved {0} to a profile!";
@@ -56,6 +56,7 @@
             "please consider donating!";
         public const string DetailsApplicationDescription = "An XInput solution for Gamecube Controllers";
 
+        public const string HeaderName = "Delfinovin";
         public const string HeaderMainWindowTitle = "Delfinovin - Gamecube Controller Application";
         public const string HeaderControllerOptions = "Delfinovin - Controller Options";
         public const string HeaderInputDisplay = "Delfinovin - Input Display";
@@ -135,8 +136,7 @@
         public const string SettingRightStickDeadzone = "Right Stick Deadzone";
 
         public const string SettingCheckForUpdates = "Check for Updates on Startup";
-        public const string SettingMinimizeToTray = "Minimize Program to System Tray";
-        public const string SettingMinimizeOnStartup = "Minimize Application on Startup";
+        public const string SettingMinimizeOnStartup = "Minimize to System Tray on Startup";
         public const string SettingRunOnStartup = "Run Application on PC Startup";
         public const string SettingDontShowAgain = "Don't show this dialog on startup again.";
 
@@ -153,7 +153,7 @@
         public const string SelectTheme = "Select Theme";
         public const string CheckForUpdates = "Check for Updates";
         public const string Open = "Open";
-        public const string Close = "Close";
+        public const string Quit = "Quit";
         
         public const string Delete = "Delete";
         public const string OK = "OK";

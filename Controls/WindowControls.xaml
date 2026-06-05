@@ -1,36 +1,39 @@
-﻿<UserControl x:Class="Delfinovin.Controls.WindowControls"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" Loaded="WindowControlsLoaded">
-    
+﻿<UserControl
+    x:Class="Delfinovin.Controls.WindowControls"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Loaded="WindowControlsLoaded"
+    mc:Ignorable="d">
+
     <UserControl.Resources>
-        <Style x:Key="hoverHighlight" 
-               TargetType="{x:Type Button}">
-            
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="HorizontalAlignment" Value="Right"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="0,10,10,10"/>
+        <Style x:Key="hoverHighlight" TargetType="{x:Type Button}">
+
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0,10,10,10" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Background="{TemplateBinding Background}" 
+                        <Border
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
-                            BorderBrush="{TemplateBinding BorderBrush}" 
                             CornerRadius="5">
 
-                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
-                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                              Margin="{TemplateBinding Padding}"
-                                              Focusable="False" />
+                            <ContentPresenter
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Focusable="False" />
                         </Border>
 
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#19FFFFFF"/>
+                                <Setter Property="Background" Value="#19FFFFFF" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -41,24 +44,28 @@
 
     <Grid>
         <DockPanel x:Name="appControlContainer">
-            <Button x:Name="windowMinimize" 
-                    Style="{StaticResource hoverHighlight}"
-                    Visibility="{Binding MinimizeButtonVisibility}" 
-                    Click="WindowMinimize_Click">
-                
-                <Image x:Name="minimizeImage"  
-                       Source="/Delfinovin;component/Resources/Icons/window-minimize.png"
-                       RenderOptions.BitmapScalingMode="HighQuality"/>
+            <Button
+                x:Name="windowMinimize"
+                Click="WindowMinimize_Click"
+                Style="{StaticResource hoverHighlight}"
+                Visibility="{Binding MinimizeButtonVisibility}">
+
+                <Image
+                    x:Name="minimizeImage"
+                    RenderOptions.BitmapScalingMode="HighQuality"
+                    Source="/Delfinovin;component/Resources/Icons/window-minimize.png" />
             </Button>
 
-            <Button x:Name="windowClose" 
-                    Style="{StaticResource hoverHighlight}"
-                    Visibility="{Binding CloseButtonVisibility}" 
-                    Click="WindowClose_Click">
+            <Button
+                x:Name="windowClose"
+                Click="WindowClose_Click"
+                Style="{StaticResource hoverHighlight}"
+                Visibility="{Binding CloseButtonVisibility}">
 
-                <Image x:Name="closeImage"
-                       Source="/Delfinovin;component/Resources/Icons/window-close.png"
-                       RenderOptions.BitmapScalingMode="HighQuality"/>
+                <Image
+                    x:Name="closeImage"
+                    RenderOptions.BitmapScalingMode="HighQuality"
+                    Source="/Delfinovin;component/Resources/Icons/window-close.png" />
             </Button>
         </DockPanel>
     </Grid>

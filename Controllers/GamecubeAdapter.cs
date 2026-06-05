@@ -82,7 +82,7 @@ namespace Delfinovin
             bool vigemInstalled = DependencyInstaller.CheckViGEmInstallation();
             if (!vigemInstalled)
             {
-                Application.Current.Dispatcher.Invoke(async () =>
+                await Application.Current.Dispatcher.Invoke(async () =>
                 {
                     // Prompt the user to see if they want to install it.
                     MessageDialog installDialog = new MessageDialog(Strings.PromptInstallViGEm);
@@ -171,9 +171,9 @@ namespace Delfinovin
                 // Begin reading adapter data on a different thread.
                 // TO-DO - This would probably be better off on its own
                 // Thread object instead of Task.Run.
-                Task.Run(async () =>
+                await Task.Run(async () =>
                 {
-                    Poll(_cancellationToken.Token);
+                    await Poll(_cancellationToken.Token);
                 }, _cancellationToken.Token);
 
                 // Set our adapter as running.
@@ -329,7 +329,7 @@ namespace Delfinovin
             }
         }
 
-        public void Start()
+        public async void Start()
         {
             // Try to open the device and initialize it. If it's not connected do nothing
             InitializeDevice();
@@ -337,8 +337,8 @@ namespace Delfinovin
             {
                 // Setup the adapter commands and begin reading from it.
                 _cancellationToken = new CancellationTokenSource();
-                InitializeAdapter();
-                BeginPolling();
+                await InitializeAdapter();
+                await BeginPolling();
             }
         }
 

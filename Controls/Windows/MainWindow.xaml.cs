@@ -24,10 +24,9 @@ namespace Delfinovin
         private int _selectedControllerPort = 0;
         
         private GamecubeDialog _controllerDialog = new GamecubeDialog();
-        private GamecubeAdapter _gamecubeAdapter = new GamecubeAdapter();
+        private GamecubeAdapter _gamecubeAdapter = ((App)Application.Current).GetCamecubeAdapter();
         private InputPlaybackView _inputPlaybackView;
         private ProfilesListView _profileListView;
-        private Forms.NotifyIcon _notifyIcon;
 
         public MainWindow()
         {
@@ -42,7 +41,6 @@ namespace Delfinovin
             _gamecubeAdapter.StopPlaybackEventRequested += StopPlaybackEventRequested;
             _gamecubeAdapter.StopRecordingInputEventRequested += StopRecordingInputEventRequested;
             _gamecubeAdapter.StartRecordingInputEventRequested += StartRecordingInputEventRequested;
-            _gamecubeAdapter.Start();
 
 
             _inputPlaybackView = new InputPlaybackView(ref _gamecubeAdapter);
@@ -58,38 +56,12 @@ namespace Delfinovin
 
         private void InitializeWindow()
         {
-            InitializeNotifyIcon();
             SetApplicationTitle();
             CreateDetailButtons();
             SetDefaultView();
 
             if (UserSettings.Default.MinimizeOnStartup)
                 this.WindowState = WindowState.Minimized;
-        }
-
-        private void InitializeNotifyIcon()
-        {
-            // Create a new NotifyIcon
-            _notifyIcon = new Forms.NotifyIcon();
-
-            // Set its hover text to the main window title
-            _notifyIcon.Text = Strings.HeaderMainWindowTitle;
-
-            // Get the application icon stream
-            Stream iconStream = Application.GetResourceStream(new Uri(APP_ICON_PATH, UriKind.Relative)).Stream;
-
-            // Set the notify icon to the application icon
-            _notifyIcon.Icon = new System.Drawing.Icon(iconStream);
-
-            // Create a new menu strip
-            Forms.ContextMenuStrip notifyIconStrip = new Forms.ContextMenuStrip();
-
-            // Add Open/Close options and subscribe to the events
-            notifyIconStrip.Items.Add(Strings.Open, null, OnNotifyIconOpenClick);
-            notifyIconStrip.Items.Add(Strings.Close, null, OnNotifyIconCloseClick);
-
-            // Apply the menu strip to the notify icon
-            _notifyIcon.ContextMenuStrip = notifyIconStrip;
         }
 
         private void SetApplicationTitle()
@@ -192,38 +164,10 @@ namespace Delfinovin
             else if (navigationSelection == NavigationSelection.Settings)
             {
                 ApplicationSettingsMenu applicationSettingsMenu = new ApplicationSettingsMenu();
+                applicationSettingsMenu.Owner = this;
+                applicationSettingsMenu.WindowStartupLocation = WindowStartupLocation.CenterOwner;
                 applicationSettingsMenu.ShowDialog();
             }
-        }
-
-
-        protected override void OnStateChanged(EventArgs e)
-        {
-            // If the window is minimized and we set the window to minimize to the tray
-            // Hide the icon and make the notifyIcon visible.
-            if (WindowState == WindowState.Minimized && UserSettings.Default.MinimizeToTray)
-            {
-                this.Hide();
-                _notifyIcon.Visible = true;
-            }
-
-            base.OnStateChanged(e);
-        }
-
-        private void OnNotifyIconOpenClick(object? sender, EventArgs e)
-        {
-            // Show our window and set the window state to normal.
-            this.Show();
-            base.WindowState = WindowState.Normal;
-
-            // Hide the notifyIcon
-            _notifyIcon.Visible = false;
-        }
-
-        private void OnNotifyIconCloseClick(object? sender, EventArgs e)
-        {
-            // Close the application.
-            this.Close();
         }
 
         private void InputFrameProcessed(object? sender, ControllerStatus[] inputs)
@@ -322,6 +266,8 @@ namespace Delfinovin
                     // Use the CurrentSynchronizationContext to tell the task
                     // we are using the main UI thread to post this dialog
                     calibrateDialog = new MessageDialog(Strings.NotificationCalibrationComplete, Forms.MessageBoxButtons.OK);
+                    calibrateDialog.Owner = this;
+                    calibrateDialog.WindowStartupLocation = WindowStartupLocation.CenterOwner;
                     calibrateDialog.ShowDialog();
 
                 }, TaskScheduler.FromCurrentSynchronizationContext());
@@ -351,6 +297,8 @@ namespace Delfinovin
             string profileApplied = string.Format(Strings.NotificationProfileApplied, profile.ProfileName, selectedPort);
 
             MessageDialog messageDialog = new MessageDialog(profileApplied, Forms.MessageBoxButtons.OK);
+            messageDialog.Owner = this;
+            messageDialog.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             messageDialog.ShowDialog();
         }
 
@@ -376,14 +324,6 @@ namespace Delfinovin
 
             // Update the current view
             SetCurrentView(navigationTag);
-        }
-
-        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            // Our application is closing, shutdown the running
-            // Gamecube adapter and NotifyIcon processes
-            _gamecubeAdapter.Stop();
-            _notifyIcon?.Dispose();  
         }
 
         private void StartRecordingInputEventRequested(object? sender, int port)

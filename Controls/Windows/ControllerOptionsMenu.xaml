@@ -1,59 +1,74 @@
-﻿<Window x:Class="Delfinovin.Controls.Windows.ControllerOptionsMenu"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:main="clr-namespace:Delfinovin"
-        xmlns:ctrl="clr-namespace:Delfinovin.Controls"
-        mc:Ignorable="d"
-        Title="{x:Static main:Strings.HeaderControllerOptions}" Width="215"
-        ResizeMode="NoResize" AllowsTransparency="True" WindowStyle="None" 
-        Background="Transparent" SizeToContent="Height">
+﻿<Window
+    x:Class="Delfinovin.Controls.Windows.ControllerOptionsMenu"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ctrl="clr-namespace:Delfinovin.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:main="clr-namespace:Delfinovin"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="{x:Static main:Strings.HeaderControllerOptions}"
+    Width="215"
+    AllowsTransparency="True"
+    Background="Transparent"
+    ResizeMode="NoResize"
+    SizeToContent="Height"
+    WindowStyle="None"
+    mc:Ignorable="d">
 
     <Grid>
-        <Rectangle x:Name="windowBackground" 
-                   Fill="{DynamicResource controllerOptionMenuBackground}" 
-                   Stroke="#3b3b3b"
-                   RadiusX="15" 
-                   RadiusY="15" />
+        <Rectangle
+            x:Name="windowBackground"
+            Fill="{DynamicResource controllerOptionMenuBackground}"
+            RadiusX="15"
+            RadiusY="15"
+            Stroke="#3b3b3b" />
 
-        <ListView x:Name="itemContainer" 
-                  Background="Transparent" 
-                  BorderBrush="Transparent" 
-                  Margin="5,5,5,5">
-            
+        <ListView
+            x:Name="itemContainer"
+            Margin="5,5,5,5"
+            Background="Transparent"
+            BorderBrush="Transparent">
+
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ItemSelected" />
-                    <Setter Property="Height" Value="60"/>
+                    <Setter Property="Height" Value="60" />
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type ListViewItem}">
-                                <Border x:Name="Bd" 
-                                        CornerRadius="5" 
-                                        BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" 
-                                        Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="False">
-                                    
-                                    <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" 
-                                                      ContentStringFormat="{TemplateBinding ContentStringFormat}"
-                                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
-                                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                <Border
+                                    x:Name="Bd"
+                                    Padding="{TemplateBinding Padding}"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="5"
+                                    SnapsToDevicePixels="False">
+
+                                    <ContentPresenter
+                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        Content="{TemplateBinding Content}"
+                                        ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                                 </Border>
-                                
+
                                 <ControlTemplate.Triggers>
                                     <MultiTrigger>
                                         <MultiTrigger.Conditions>
-                                            <Condition Property="IsMouseOver" Value="True"/>
+                                            <Condition Property="IsMouseOver" Value="True" />
                                         </MultiTrigger.Conditions>
 
                                         <MultiTrigger.EnterActions>
                                             <BeginStoryboard>
                                                 <Storyboard>
-                                                    <ColorAnimation Storyboard.TargetName="Bd" 
-                                                                    Storyboard.TargetProperty="Background.Color" 
-                                                                    To="#2698DBE0" Duration="0:0:0.5" />
-                                                    
+                                                    <ColorAnimation
+                                                        Storyboard.TargetName="Bd"
+                                                        Storyboard.TargetProperty="Background.Color"
+                                                        To="#2698DBE0"
+                                                        Duration="0:0:0.5" />
+
                                                 </Storyboard>
                                             </BeginStoryboard>
                                         </MultiTrigger.EnterActions>
@@ -61,9 +76,11 @@
                                         <MultiTrigger.ExitActions>
                                             <BeginStoryboard>
                                                 <Storyboard>
-                                                    <ColorAnimation Storyboard.TargetName="Bd" 
-                                                                    Storyboard.TargetProperty="Background.Color" 
-                                                                    To="Transparent" Duration="00:00:0.5" />
+                                                    <ColorAnimation
+                                                        Storyboard.TargetName="Bd"
+                                                        Storyboard.TargetProperty="Background.Color"
+                                                        To="Transparent"
+                                                        Duration="00:00:0.5" />
 
                                                 </Storyboard>
                                             </BeginStoryboard>
@@ -77,23 +94,17 @@
             </ListView.ItemContainerStyle>
 
             <ListViewItem Tag="{x:Static main:OptionSelection.EditControllerSettings}">
-                <ctrl:ImageListItem 
-                    ItemText="{x:Static main:Strings.MenuItemEditController}"
-                    ImageSource="/Delfinovin;component/Resources/Icons/pencil.png"/>
-                
+                <ctrl:ImageListItem ImageSource="/Delfinovin;component/Resources/Icons/pencil.png" ItemText="{x:Static main:Strings.MenuItemEditController}" />
+
             </ListViewItem>
 
             <ListViewItem Tag="{x:Static main:OptionSelection.CalibrateController}">
-                <ctrl:ImageListItem 
-                    ItemText="{x:Static main:Strings.MenuItemCalibrateSticks}"
-                    ImageSource="/Delfinovin;component/Resources/Icons/Buttons/Xbox/Left Stick.png"/>
-                
+                <ctrl:ImageListItem ImageSource="/Delfinovin;component/Resources/Icons/Buttons/Xbox/Left Stick.png" ItemText="{x:Static main:Strings.MenuItemCalibrateSticks}" />
+
             </ListViewItem>
 
             <ListViewItem Tag="{x:Static main:OptionSelection.PopoutInputViewer}">
-                <ctrl:ImageListItem 
-                    ItemText="{x:Static main:Strings.MenuItemOpenViewer}"
-                    ImageSource="/Delfinovin;component/Resources/Icons/button-cursor.png"/>
+                <ctrl:ImageListItem ImageSource="/Delfinovin;component/Resources/Icons/button-cursor.png" ItemText="{x:Static main:Strings.MenuItemOpenViewer}" />
 
             </ListViewItem>
 

@@ -1,28 +1,33 @@
-﻿<UserControl x:Class="Delfinovin.Controls.ControllerDetailButton"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d">
+﻿<UserControl
+    x:Class="Delfinovin.Controls.ControllerDetailButton"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
 
     <Grid>
-        <Button x:Name="detailButton" 
-                Width="200" Height="70" 
-                FontFamily="Microsoft YaHei" Foreground="{DynamicResource textColor}"
-                HorizontalContentAlignment="Stretch"
-                BorderThickness="0" 
-                Padding="10" Margin="10,5" 
-                Click="DetailButton_Click">
-            
+        <Button
+            x:Name="detailButton"
+            Width="225"
+            Height="70"
+            Margin="5,10,5,10"
+            Padding="10"
+            HorizontalContentAlignment="Stretch"
+            BorderThickness="0"
+            Click="DetailButton_Click"
+            FontFamily="Microsoft YaHei"
+            Foreground="{DynamicResource textColor}">
+
             <Button.Resources>
                 <Style TargetType="{x:Type Button}">
-                    <Setter Property="Background" Value="{DynamicResource detailButtonColor}"/>
-                    <Setter Property="Opacity" Value="0.75"/>
+                    <Setter Property="Background" Value="{DynamicResource detailButtonColor}" />
+                    <Setter Property="Opacity" Value="0.75" />
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
                                 <Border Background="{TemplateBinding Background}" CornerRadius="10">
-                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+                                    <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Center" />
                                 </Border>
                             </ControlTemplate>
                         </Setter.Value>
@@ -30,54 +35,71 @@
 
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource detailButtonHighlight}"/>
+                            <Setter Property="Background" Value="{DynamicResource detailButtonHighlight}" />
                         </Trigger>
 
                         <Trigger Property="IsFocused" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource detailButtonHighlight}"/>
+                            <Setter Property="Background" Value="{DynamicResource detailButtonHighlight}" />
                         </Trigger>
 
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" Value="0.30"/>
+                            <Setter Property="Opacity" Value="0.30" />
                         </Trigger>
                     </Style.Triggers>
                 </Style>
             </Button.Resources>
 
-            <Grid x:Name="controlContainer" 
-                  HorizontalAlignment="Stretch">
+            <Grid x:Name="controlContainer" HorizontalAlignment="Stretch">
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="40"></ColumnDefinition>
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="40" />
                 </Grid.ColumnDefinitions>
 
                 <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition />
+                    <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <TextBlock x:Name="portDisplay" 
-                           Grid.Column="1"
-                           HorizontalAlignment="Stretch" 
-                           VerticalAlignment="Center" 
-                           FontFamily="Bahnschrift SemiBold" FontSize="12" 
-                           Margin="0,5,0,0"/>
+                <TextBlock
+                    x:Name="portDisplay"
+                    Grid.Column="1"
+                    Margin="0,0,0,5"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center"
+                    FontFamily="Bahnschrift SemiBold"
+                    FontSize="12" />
 
-                <TextBlock x:Name="calibrationStatusDisplay" 
-                           Grid.Column="1" Grid.Row="1" 
-                           FontFamily="Bahnschrift SemiBold" FontSize="10"/>
+                <TextBlock
+                    x:Name="profileDisplay"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    FontFamily="Bahnschrift SemiBold"
+                    FontSize="10"
+                    Margin="0,0,0,5">Profile</TextBlock>
 
-                <Image x:Name="connectionStatusDisplay" 
-                       Width="30" Height="40" 
-                       Grid.RowSpan="2" />
+                <TextBlock
+                    x:Name="calibrationStatusDisplay"
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    FontFamily="Bahnschrift SemiBold"
+                    FontSize="10"/>
 
-                <Image x:Name="settingsButton"
-                       Width="30" Height="30" 
-                       Grid.Column="2" Grid.RowSpan="2" 
-                       Source="/Delfinovin;component/Resources/Icons/arrow-up.png"/>
+                <Image
+                    x:Name="connectionStatusDisplay"
+                    Grid.RowSpan="3"
+                    Width="30"
+                    Height="40" />
+
+                <Image
+                    x:Name="settingsButton"
+                    Grid.RowSpan="3"
+                    Grid.Column="2"
+                    Width="30"
+                    Height="30"
+                    Source="/Delfinovin;component/Resources/Icons/arrow-up.png" />
             </Grid>
         </Button>
     </Grid>

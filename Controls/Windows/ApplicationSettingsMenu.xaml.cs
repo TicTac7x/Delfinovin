@@ -31,7 +31,6 @@ namespace Delfinovin.Controls.Windows
         {
             // Update the controls with the application settings.
             checkUpdatesStartup.Checked = UserSettings.Default.CheckForUpdates;
-            minimizeToSystemTray.Checked = UserSettings.Default.MinimizeToTray;
             minimizeAppOnStartup.Checked = UserSettings.Default.MinimizeOnStartup;
             runAppOnPCStart.Checked = UserSettings.Default.RunOnStartup;
         }
@@ -96,7 +95,6 @@ namespace Delfinovin.Controls.Windows
             // Gather the settings from the controls.
             UserSettings.Default.CheckForUpdates = checkUpdatesStartup.Checked;
             UserSettings.Default.MinimizeOnStartup = minimizeAppOnStartup.Checked;
-            UserSettings.Default.MinimizeToTray = minimizeToSystemTray.Checked;
             UserSettings.Default.RunOnStartup = runAppOnPCStart.Checked;
 
             for (int i = 0; i < UserSettings.Default.DefaultProfiles.Count; i++)
@@ -122,6 +120,8 @@ namespace Delfinovin.Controls.Windows
         {
             // Open the theme selector menu
             ThemeSelectorMenu themeMenu = new ThemeSelectorMenu();
+            themeMenu.Owner = this;
+            themeMenu.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             themeMenu.ShowDialog();
         }
 
@@ -129,6 +129,8 @@ namespace Delfinovin.Controls.Windows
         {
             // Prompt the user if they'd like to reset the application settings.
             MessageDialog messageDialog = new MessageDialog(Strings.PromptResetSettings);
+            messageDialog.Owner = this;
+            messageDialog.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             messageDialog.ShowDialog();
 
             bool restore = messageDialog.Result == Forms.DialogResult.Yes;
@@ -141,7 +143,6 @@ namespace Delfinovin.Controls.Windows
             // the application setting file.
             UserSettings.Default.CheckForUpdates = true;
             UserSettings.Default.MinimizeOnStartup = false;
-            UserSettings.Default.MinimizeToTray = false;
             UserSettings.Default.RunOnStartup = false;
             UserSettings.Default.ControllerColor = Enum.GetName(typeof(ControllerColor), ControllerColor.Indigo);
 
@@ -167,6 +168,8 @@ namespace Delfinovin.Controls.Windows
         {
             // Open the HotkeyMappingWindow
             HotkeyMappingWindow mappingWindow = new HotkeyMappingWindow();
+            mappingWindow.Owner = this;
+            mappingWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             mappingWindow.ShowDialog();
 
             // Reload the settings. 
