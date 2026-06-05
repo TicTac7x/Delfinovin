@@ -73,8 +73,6 @@
 
             <ctrl:ToggleButtonListItem x:Name="checkUpdatesStartup" ItemText="{x:Static main:Strings.SettingCheckForUpdates}" />
 
-            <ctrl:ToggleButtonListItem x:Name="minimizeToSystemTray" ItemText="{x:Static main:Strings.SettingMinimizeToTray}" />
-
             <ctrl:ToggleButtonListItem x:Name="minimizeAppOnStartup" ItemText="{x:Static main:Strings.SettingMinimizeOnStartup}" />
 
             <ctrl:ToggleButtonListItem x:Name="runAppOnPCStart" ItemText="{x:Static main:Strings.SettingRunOnStartup}" />

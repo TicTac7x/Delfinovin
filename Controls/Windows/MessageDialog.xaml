@@ -81,6 +81,12 @@
             </StackPanel.Resources>
 
             <Button
+                x:Name="noButton"
+                Click="Button_Click"
+                Content="{x:Static main:Strings.No}"
+                Tag="{x:Static forms:DialogResult.No}" />
+
+            <Button
                 x:Name="okayButton"
                 Click="Button_Click"
                 Content="{x:Static main:Strings.OK}"
@@ -91,12 +97,6 @@
                 Click="Button_Click"
                 Content="{x:Static main:Strings.Yes}"
                 Tag="{x:Static forms:DialogResult.Yes}" />
-
-            <Button
-                x:Name="noButton"
-                Click="Button_Click"
-                Content="{x:Static main:Strings.No}"
-                Tag="{x:Static forms:DialogResult.No}" />
 
         </StackPanel>
     </Grid>

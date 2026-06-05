@@ -24,14 +24,18 @@ namespace Delfinovin
             ShutdownMode = ShutdownMode.OnExplicitShutdown;
 
             createGamecubeAdapter();
+
+            CreateMainWindow();
             if (UserSettings.Default.MinimizeOnStartup == false)
             {
                 ShowMainWindow();
             }
+                
             CreateNotifyIcon();
             UpdateRunningOldExecutable();
             IsInstanceRunning();
             ApplyThemes();
+            _gamecubeAdapter.Start();
         }
 
         protected override void OnExit(ExitEventArgs e)
@@ -43,6 +47,11 @@ namespace Delfinovin
             base.OnExit(e);
         }
 
+        private void CreateMainWindow()
+        {
+            Current.MainWindow = new MainWindow();
+        }
+
         public GamecubeAdapter GetCamecubeAdapter()
         {
             return _gamecubeAdapter;
@@ -51,16 +60,10 @@ namespace Delfinovin
         private void createGamecubeAdapter()
         {
             _gamecubeAdapter = new GamecubeAdapter();
-            _gamecubeAdapter.Start();
         }
 
         private void ShowMainWindow()
         {
-            if (Current.MainWindow == null)
-            {
-                Current.MainWindow = new MainWindow();
-            }
-
             Current.MainWindow.Show();
             Current.MainWindow.Activate();
             Current.MainWindow.Focus();
@@ -68,10 +71,7 @@ namespace Delfinovin
 
         private void CloseMainWindow()
         {
-            if (Current.MainWindow != null)
-            {
-                Current.MainWindow.Close();
-            }
+            Current.MainWindow.Hide();
         }
 
         private void CreateNotifyIcon()

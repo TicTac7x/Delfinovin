@@ -164,6 +164,8 @@ namespace Delfinovin
             else if (navigationSelection == NavigationSelection.Settings)
             {
                 ApplicationSettingsMenu applicationSettingsMenu = new ApplicationSettingsMenu();
+                applicationSettingsMenu.Owner = this;
+                applicationSettingsMenu.WindowStartupLocation = WindowStartupLocation.CenterOwner;
                 applicationSettingsMenu.ShowDialog();
             }
         }
@@ -264,6 +266,8 @@ namespace Delfinovin
                     // Use the CurrentSynchronizationContext to tell the task
                     // we are using the main UI thread to post this dialog
                     calibrateDialog = new MessageDialog(Strings.NotificationCalibrationComplete, Forms.MessageBoxButtons.OK);
+                    calibrateDialog.Owner = this;
+                    calibrateDialog.WindowStartupLocation = WindowStartupLocation.CenterOwner;
                     calibrateDialog.ShowDialog();
 
                 }, TaskScheduler.FromCurrentSynchronizationContext());
@@ -293,6 +297,8 @@ namespace Delfinovin
             string profileApplied = string.Format(Strings.NotificationProfileApplied, profile.ProfileName, selectedPort);
 
             MessageDialog messageDialog = new MessageDialog(profileApplied, Forms.MessageBoxButtons.OK);
+            messageDialog.Owner = this;
+            messageDialog.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             messageDialog.ShowDialog();
         }
 

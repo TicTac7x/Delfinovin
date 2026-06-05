@@ -9,9 +9,9 @@
     <Grid>
         <Button
             x:Name="detailButton"
-            Width="200"
+            Width="225"
             Height="70"
-            Margin="10,5"
+            Margin="5,10,5,10"
             Padding="10"
             HorizontalContentAlignment="Stretch"
             BorderThickness="0"
@@ -59,35 +59,43 @@
 
                 <Grid.RowDefinitions>
                     <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
+                    <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
 
                 <TextBlock
                     x:Name="portDisplay"
                     Grid.Column="1"
-                    Margin="0,5,0,0"
+                    Margin="0,0,0,5"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Center"
                     FontFamily="Bahnschrift SemiBold"
                     FontSize="12" />
 
                 <TextBlock
-                    x:Name="calibrationStatusDisplay"
+                    x:Name="profileDisplay"
                     Grid.Row="1"
                     Grid.Column="1"
                     FontFamily="Bahnschrift SemiBold"
-                    FontSize="10" />
+                    FontSize="10"
+                    Margin="0,0,0,5">Profile</TextBlock>
+
+                <TextBlock
+                    x:Name="calibrationStatusDisplay"
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    FontFamily="Bahnschrift SemiBold"
+                    FontSize="10"/>
 
                 <Image
                     x:Name="connectionStatusDisplay"
-                    Grid.RowSpan="2"
+                    Grid.RowSpan="3"
                     Width="30"
                     Height="40" />
 
                 <Image
                     x:Name="settingsButton"
-                    Grid.RowSpan="2"
+                    Grid.RowSpan="3"
                     Grid.Column="2"
                     Width="30"
                     Height="30"
