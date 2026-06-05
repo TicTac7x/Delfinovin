@@ -56,6 +56,7 @@
             "please consider donating!";
         public const string DetailsApplicationDescription = "An XInput solution for Gamecube Controllers";
 
+        public const string HeaderName = "Delfinovin";
         public const string HeaderMainWindowTitle = "Delfinovin - Gamecube Controller Application";
         public const string HeaderControllerOptions = "Delfinovin - Controller Options";
         public const string HeaderInputDisplay = "Delfinovin - Input Display";
@@ -153,7 +154,7 @@
         public const string SelectTheme = "Select Theme";
         public const string CheckForUpdates = "Check for Updates";
         public const string Open = "Open";
-        public const string Close = "Close";
+        public const string Quit = "Quit";
         
         public const string Delete = "Delete";
         public const string OK = "OK";

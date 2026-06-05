@@ -11,7 +11,8 @@
         Width="930" Height="500"
         AllowsTransparency="True" Background="Transparent"
         ResizeMode="NoResize" WindowStyle="None"
-        mc:Ignorable="d" Closing="MainWindow_Closing">
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen">
 
     <Grid>
         <Grid.RowDefinitions>
